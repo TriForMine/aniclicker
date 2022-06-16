@@ -57,7 +57,6 @@ const IndexPage = () => {
 
     const handleClickProfile = useCallback(() => {
         profile(access_token).then((data) => {
-            console.log(data);
             if (data !== false)
                 alert(data.data)
         })

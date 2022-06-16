@@ -8,7 +8,6 @@ export async function login(email: string, password: string) {
 		})
 
 		const {accessToken} = res.data;
-
 		return accessToken
 	} catch (err) {
 		return false;
