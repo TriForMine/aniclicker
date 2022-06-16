@@ -1,0 +1,12 @@
+{
+  "name": "utils",
+  "packageManager": "yarn@4.0.0-rc.6",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "devDependencies": {
+    "typescript": "^4.7.3"
+  },
+  "dependencies": {
+    "cbor-x": "^1.3.1"
+  }
+}

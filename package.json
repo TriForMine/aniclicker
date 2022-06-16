@@ -1,0 +1,20 @@
+{
+  "name": "aniclicker",
+  "packageManager": "yarn@4.0.0-rc.6",
+  "private": true,
+  "workspaces": [
+    "web",
+    "server",
+    "utils"
+  ],
+  "scripts": {
+    "web": "yarn workspace web dev",
+    "server": "yarn workspace server dev",
+    "utils": "yarn workspace utils",
+    "start": "concurrently --kill-others-on-fail \"yarn server\"  \"yarn web\""
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.1",
+    "tsc-watch": "^5.0.3"
+  }
+}

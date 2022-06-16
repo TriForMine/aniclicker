@@ -1,0 +1,12 @@
+# Project exclude paths
+
+/node_modules/
+**/dist
+server/.env
+yarn-error.log/
+.DS_Store
+*.env*
+.yarn/*
+.pnp.*
+.idea/
+.vscode/
