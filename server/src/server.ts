@@ -230,7 +230,7 @@ export const WebApiApp = App()
       }
     }
   })
-  .get("/profile",(res, req) => {
+  .get("/profile", (res, req) => {
     const user = isAuthenticated(req);
 
     if (!user) {
