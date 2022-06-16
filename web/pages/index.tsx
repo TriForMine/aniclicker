@@ -6,6 +6,7 @@ import {login, profile} from "../src/auth";
 import api from "../src/api";
 import { useStore } from "../src/store";
 import {NextSeo} from "next-seo";
+import React from 'react';
 
 const IndexPage = () => {
     const access_token = useStore((state) => state.access_token)

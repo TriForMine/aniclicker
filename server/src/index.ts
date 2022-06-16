@@ -7,8 +7,8 @@ GameLoop();
 
 WebApiApp.listen(PORT, (token) => {
   if (token) {
-    logger.info("Listening to port " + PORT);
+    logger.info("Listening to port", PORT);
   } else {
-    logger.fatal("Failed to listen to port " + PORT);
+    logger.fatal("Failed to listen to port", PORT);
   }
 });
