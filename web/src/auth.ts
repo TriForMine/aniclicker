@@ -15,13 +15,9 @@ export async function login(email: string, password: string) {
 }
 
 export function profile(access_token) {
-  try {
-    return api.get("http://localhost:9001/profile", {
-      headers: {
-        authorization: `Bearer ${access_token}`,
-      },
-    });
-  } catch (err) {
-    return false;
-  }
+  return api.get("http://localhost:9001/profile", {
+    headers: {
+      authorization: `Bearer ${access_token}`,
+    },
+  });
 }
