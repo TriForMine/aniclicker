@@ -2,7 +2,7 @@ import { db } from "../utils/db.js";
 import type { User } from "@prisma/client";
 import * as argon2 from "argon2";
 
-export async function findUserByEmail(email: User["email"]) {
+export function findUserByEmail(email: User["email"]) {
   return db.user.findUnique({
     where: {
       email,
@@ -29,7 +29,7 @@ export async function createUser(
   });
 }
 
-export async function findUserById(id: string) {
+export function findUserById(id: string) {
   return db.user.findUnique({
     where: {
       id,

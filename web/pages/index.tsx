@@ -8,7 +8,7 @@ import { useStore } from "../src/store";
 import {NextSeo} from "next-seo";
 import React from 'react';
 
-const IndexPage = () => {
+function IndexPage() {
     const access_token = useStore((state) => state.access_token)
     const { sendMessage, lastMessage, readyState } = useWebSocket(`ws://localhost:9001`);
 

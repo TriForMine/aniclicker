@@ -14,7 +14,7 @@ export async function login(email: string, password: string) {
   }
 }
 
-export async function profile(access_token) {
+export function profile(access_token) {
   try {
     return api.get("http://localhost:9001/profile", {
       headers: {
