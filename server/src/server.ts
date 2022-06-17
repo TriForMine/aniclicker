@@ -23,9 +23,64 @@ export const WebApiApp = App()
     maxPayloadLength: 16 * 1024 * 1024,
     idleTimeout: 10,
     /* Handlers */
+    upgrade: async (res, req, context) => {
+      const upgradeAborted = { aborted: false };
+
+      const secWebSocketKey = req.getHeader("sec-websocket-key");
+      const secWebSocketProtocol = req.getHeader("sec-websocket-protocol");
+      const secWebSocketExtensions = req.getHeader("sec-websocket-extensions");
+
+      const cookies = req.getHeader("cookie");
+      const cookieToken = cookies
+        .split(";")
+        .filter((cookie) => cookie.split("=")[0] === "refreshToken")
+        .map((cookie) => cookie.split("=")[1])[0];
+
+      if (!cookieToken) {
+        res.writeStatus("401");
+        setupCors(res);
+        res.end("Missing refresh token.");
+        return;
+      }
+
+      const payload = verifyRefreshToken(cookieToken);
+
+      findRefreshTokenById(payload.jti).then((savedRefreshToken) => {
+        if (!savedRefreshToken || savedRefreshToken.revoked) {
+          res.writeStatus("401");
+          setupCors(res);
+          if (!res.aborted) {
+            res.end("Unauthorized");
+          }
+          return;
+        }
+
+        findUserById(payload.userId).then((user) => {
+          if (upgradeAborted.aborted) {
+            return;
+          }
+
+          /* This immediately calls open handler, you must not use res after this call */
+          res.upgrade(
+            {
+              user,
+            },
+            /* Spell these correctly */
+            secWebSocketKey,
+            secWebSocketProtocol,
+            secWebSocketExtensions,
+            context
+          );
+        });
+      });
+
+      res.onAborted(() => {
+        /* We can simply signal that we were aborted */
+        upgradeAborted.aborted = true;
+      });
+    },
     open: (ws) => {
       ws.id = nanoid();
-      ws.username = `user-${Math.floor(Math.random() * Math.floor(9999))}`;
 
       ws.subscribe(MESSAGE_ENUM.CLIENT_CONNECTED);
       ws.subscribe(MESSAGE_ENUM.CLIENT_DISCONNECTED);
@@ -37,11 +92,11 @@ export const WebApiApp = App()
 
       send_message(ws, MESSAGE_ENUM.SELF_CONNECTED, {
         id: ws.id,
-        username: ws.username,
+        username: ws.user.username,
       });
       broadcast_message(MESSAGE_ENUM.CLIENT_CONNECTED, {
         id: ws.id,
-        username: ws.username,
+        username: ws.user.username,
       });
 
       REQUIRE_UPDATES.add(ws.id);
@@ -52,7 +107,7 @@ export const WebApiApp = App()
       switch (clientMsg.type) {
         case MESSAGE_ENUM.CLIENT_MESSAGE:
           broadcast_message(MESSAGE_ENUM.CLIENT_MESSAGE, {
-            sender: ws.username,
+            sender: ws.user.username,
             content: clientMsg.data,
           });
           break;
@@ -69,7 +124,7 @@ export const WebApiApp = App()
 
       broadcast_message(MESSAGE_ENUM.CLIENT_DISCONNECTED, {
         id: ws.id,
-        username: ws.username,
+        username: ws.user.username,
       });
     },
   })
@@ -93,7 +148,7 @@ export const WebApiApp = App()
           password: data.password,
         });
         const jti = randomUUID();
-        const { accessToken, refreshToken } = generateTokens(user, jti);
+        const { accessToken, refreshToken } = generateTokens(user.id, jti);
         await saveRefreshToken(jti, refreshToken, user.id);
 
         res.writeStatus("201 Created");
@@ -142,7 +197,10 @@ export const WebApiApp = App()
       }
 
       const jti = randomUUID();
-      const { accessToken, refreshToken } = generateTokens(existingUser, jti);
+      const { accessToken, refreshToken } = generateTokens(
+        existingUser.id,
+        jti
+      );
       await saveRefreshToken(jti, refreshToken, existingUser.id);
 
       res.writeHeader(
@@ -204,7 +262,7 @@ export const WebApiApp = App()
 
       await deleteRefreshToken(savedRefreshToken.id);
       const jti = randomUUID();
-      const { accessToken, refreshToken } = generateTokens(user, jti);
+      const { accessToken, refreshToken } = generateTokens(user.id, jti);
       await saveRefreshToken(jti, refreshToken, user.id);
 
       res.writeHeader(
@@ -226,7 +284,7 @@ export const WebApiApp = App()
       setupCors(res);
       logger.error(err);
       if (!res.aborted) {
-        res.end();
+        res.end("401 Unauthorized");
       }
     }
   })

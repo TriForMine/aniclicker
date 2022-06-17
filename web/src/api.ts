@@ -1,7 +1,7 @@
 import axios from "axios";
 import createAuthRefreshInterceptor from "axios-auth-refresh";
 import { decode, encode } from "utils";
-import { useStore } from "./store";
+import {initializeStore} from "./store";
 
 const api = axios.create({
   baseURL: "http://localhost:9001",
@@ -15,7 +15,15 @@ const api = axios.create({
   ],
   transformResponse: [
     function (data) {
-      return decode(new Uint8Array(data));
+        if (data) {
+            try {
+                return decode(new Uint8Array(data));
+            } catch (err) {
+                return new TextDecoder().decode(data);
+            }
+        } else {
+          return data;
+        }
     },
   ],
 });
@@ -27,7 +35,8 @@ createAuthRefreshInterceptor(api, (failedRequest) =>
     })
     .then((resp) => {
       const { accessToken } = resp.data;
-      useStore.setState({
+      const zustandStore = initializeStore();
+      zustandStore.setState({
         access_token: accessToken,
       });
       failedRequest.response.config.headers.authorization = `Bearer ${accessToken}`;

@@ -31,6 +31,13 @@ export async function createUser(
 
 export function findUserById(id: string) {
   return db.user.findUnique({
+    select: {
+      id: true,
+      username: true,
+      createdAt: true,
+      updatedAt: true,
+      email: true,
+    },
     where: {
       id,
     },

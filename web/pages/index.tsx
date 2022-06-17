@@ -4,12 +4,19 @@ import {MESSAGE_ENUM, decode, encode} from "utils";
 import {Button, Typography} from "@mui/material";
 import {login, profile} from "../src/auth";
 import api from "../src/api";
-import { useStore } from "../src/store";
+import {initializeStore, useStore} from "../src/store";
 import {NextSeo} from "next-seo";
 import React from 'react';
-
+import {GetServerSideProps} from "next";
+import shallow from "zustand/shallow";
+import axios from "axios";
 function IndexPage() {
-    const access_token = useStore((state) => state.access_token)
+    const {access_token, setAccessToken} = useStore((store) => ({
+            access_token: store.access_token,
+            setAccessToken: store.setAccessToken,
+        }),
+        shallow)
+
     const { sendMessage, lastMessage, readyState } = useWebSocket(`ws://localhost:9001`);
 
     useEffect(() => {
@@ -53,8 +60,8 @@ function IndexPage() {
     const handleClickLogin = useCallback(async () => {
         const accessToken = await login("test@triformine.dev", "password")
         if (accessToken)
-            useStore.setState({access_token: accessToken})
-    }, []);
+            setAccessToken(accessToken)
+    }, [setAccessToken]);
 
     const handleClickProfile = useCallback(() => {
         profile(access_token).then((data) => {
@@ -104,5 +111,33 @@ function IndexPage() {
         </Button>
     </>
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const { req, res } = context;
+    const cookie = req.headers.cookie;
+    try {
+        const data = await api.post("http://localhost:9001/refreshToken", null, {
+            headers: {
+                cookie
+            },
+            responseType: "arraybuffer",
+        })
+
+        res.setHeader('Set-Cookie', data.headers['set-cookie']);
+
+        const zustandStore = initializeStore()
+
+        zustandStore.getState().setAccessToken(data.data.accessToken)
+
+        return {
+            props: {initialZustandState: JSON.stringify(zustandStore.getState())},
+        }
+    } catch (e) {
+        return {
+            props: {}
+        }
+    }
+}
+
 
 export default IndexPage

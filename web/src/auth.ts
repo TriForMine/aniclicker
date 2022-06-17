@@ -5,6 +5,8 @@ export async function login(email: string, password: string) {
     const res = await api.post("http://localhost:9001/login", {
       email,
       password,
+    }, {
+        withCredentials: true,
     });
 
     const { accessToken } = res.data;
