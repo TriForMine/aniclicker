@@ -36,7 +36,7 @@ createAuthRefreshInterceptor(api, (failedRequest) =>
     .then((resp) => {
       const { accessToken } = resp.data;
       if (store) {
-        store.getState().setAccessToken(accessToken)
+        store.getState().setAccessToken(accessToken);
       }
 
       failedRequest.response.config.headers.authorization = `Bearer ${accessToken}`;
