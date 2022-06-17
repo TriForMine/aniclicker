@@ -3,7 +3,7 @@ import createContext from "zustand/context";
 import type { StoreApi } from "zustand";
 import {useLayoutEffect} from "react";
 
-let store
+export let store
 
 declare type ExtractState<S> = S extends {
   getState: () => infer T;
