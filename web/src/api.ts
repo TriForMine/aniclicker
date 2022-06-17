@@ -1,7 +1,7 @@
 import axios from "axios";
 import createAuthRefreshInterceptor from "axios-auth-refresh";
 import { decode, encode } from "utils";
-import {initializeStore} from "./store";
+import { initializeStore } from "./store";
 
 const api = axios.create({
   baseURL: "http://localhost:9001",
@@ -15,15 +15,15 @@ const api = axios.create({
   ],
   transformResponse: [
     function (data) {
-        if (data) {
-            try {
-                return decode(new Uint8Array(data));
-            } catch (err) {
-                return new TextDecoder().decode(data);
-            }
-        } else {
-          return data;
+      if (data) {
+        try {
+          return decode(new Uint8Array(data));
+        } catch (err) {
+          return new TextDecoder().decode(data);
         }
+      } else {
+        return data;
+      }
     },
   ],
 });
