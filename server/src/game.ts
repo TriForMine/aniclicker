@@ -5,6 +5,19 @@ import { REQUIRE_UPDATES, SOCKETS } from "./cache.js";
 const TICK_LENGTH = 1000 / 20;
 let previous_tick = Date.now();
 
+const update = function (delta: number) {
+  for (const id of REQUIRE_UPDATES) {
+    REQUIRE_UPDATES.delete(id);
+    const ws = SOCKETS.get(id);
+    if (ws) {
+      send_message(ws, MESSAGE_ENUM.CLIENT_UPDATE, {
+        coin: 5,
+        delta,
+      });
+    }
+  }
+};
+
 const GameLoop = () => {
   const now = Date.now();
 
@@ -19,19 +32,6 @@ const GameLoop = () => {
     setTimeout(GameLoop);
   } else {
     setImmediate(GameLoop);
-  }
-};
-
-const update = function (delta: number) {
-  for (const id of REQUIRE_UPDATES) {
-    REQUIRE_UPDATES.delete(id);
-    const ws = SOCKETS.get(id);
-    if (ws) {
-      send_message(ws, MESSAGE_ENUM.CLIENT_UPDATE, {
-        coin: 5,
-        delta,
-      });
-    }
   }
 };
 

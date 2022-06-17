@@ -7,7 +7,7 @@ import { CacheProvider, EmotionCache } from '@emotion/react';
 import createEmotionCache from '../src/createEmotionCache';
 import '@fontsource/rubik'
 import {Box, Container, useMediaQuery} from "@mui/material";
-import {TokenState, Provider, initializeStore} from "../src/store";
+import {TokenState, Provider, initializeStore, useCreateStore} from "../src/store";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -33,7 +33,7 @@ export default function MyApp(props: MyAppProps) {
 	const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
 	return (
-		<Provider createStore={() => initializeStore(props.pageProps.initialZustandState)}>
+		<Provider createStore={useCreateStore(props.pageProps.initialZustandState)}>
 			<CacheProvider value={emotionCache}>
 				<Head>
 					<meta name="viewport" content="initial-scale=1, width=device-width" />

@@ -16,6 +16,35 @@ import * as argon2 from "argon2";
 import { isAuthenticated } from "./utils/middlewares.js";
 import setupCors from "./utils/cors.js";
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export function broadcast_message(topic: MESSAGE_ENUM, message: any) {
+  return WebApiApp.publish(
+    topic,
+    encode({
+      type: topic,
+      data: message,
+    }),
+    true,
+    false
+  );
+}
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export function send_message(
+  socket: WebSocket,
+  topic: MESSAGE_ENUM,
+  message: any
+) {
+  return socket.send(
+    encode({
+      type: topic,
+      data: message,
+    }),
+    true,
+    false
+  );
+}
+
 export const WebApiApp = App()
   .ws("/*", {
     /* Options */
@@ -306,32 +335,3 @@ export const WebApiApp = App()
 
     res.writeStatus("404").end("404");
   });
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-export function broadcast_message(topic: MESSAGE_ENUM, message: any) {
-  return WebApiApp.publish(
-    topic,
-    encode({
-      type: topic,
-      data: message,
-    }),
-    true,
-    false
-  );
-}
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-export function send_message(
-  socket: WebSocket,
-  topic: MESSAGE_ENUM,
-  message: any
-) {
-  return socket.send(
-    encode({
-      type: topic,
-      data: message,
-    }),
-    true,
-    false
-  );
-}

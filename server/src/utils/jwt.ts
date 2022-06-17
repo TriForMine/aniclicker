@@ -1,4 +1,3 @@
-import type { User } from "@prisma/client";
 import { createSigner, createVerifier } from "fast-jwt";
 
 // Access Token that expires every 5 minutes
