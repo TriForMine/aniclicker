@@ -1,9 +1,9 @@
 import create, { EqualityChecker, State, StateSelector } from "zustand";
 import createContext from "zustand/context";
 import type { StoreApi } from "zustand";
-import {useLayoutEffect} from "react";
+import { useLayoutEffect } from "react";
 
-let store
+let store;
 
 declare type ExtractState<S> = S extends {
   getState: () => infer T;
@@ -52,15 +52,15 @@ export const initializeStore = (preloadedState?: string) => {
 
 export function useCreateStore(serverInitialState?: string) {
   // Server side code: For SSR & SSG, always use a new store.
-  if (typeof window === 'undefined') {
-    return () => initializeStore(serverInitialState)
+  if (typeof window === "undefined") {
+    return () => initializeStore(serverInitialState);
   }
   // End of server side code
 
   // Client side code:
   // Next.js always re-uses same store regardless of whether page is a SSR or SSG or CSR type.
-  const isReusingStore = Boolean(store)
-  store = store ?? initializeStore(serverInitialState)
+  const isReusingStore = Boolean(store);
+  store = store ?? initializeStore(serverInitialState);
   // When next.js re-renders _app while re-using an older store, then replace current state with
   // the new state (in the next render cycle).
   // (Why next render cycle? Because react cannot re-render while a render is already in progress.
@@ -75,20 +75,20 @@ export function useCreateStore(serverInitialState?: string) {
     // then add `serverInitialState = getDefaultInitialState()` here.
     if (serverInitialState && isReusingStore) {
       const state = serverInitialState
-          ? (JSON.parse(serverInitialState) as Partial<TokenState>)
-          : undefined;
+        ? (JSON.parse(serverInitialState) as Partial<TokenState>)
+        : undefined;
 
       store.setState(
-          {
-            // re-use functions from existing store
-            ...store.getState(),
-            // but reset all other properties.
-            ...state,
-          },
-          true // replace states, rather than shallow merging
-      )
+        {
+          // re-use functions from existing store
+          ...store.getState(),
+          // but reset all other properties.
+          ...state,
+        },
+        true // replace states, rather than shallow merging
+      );
     }
-  })
+  });
 
-  return () => store
+  return () => store;
 }
