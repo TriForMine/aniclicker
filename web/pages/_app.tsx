@@ -7,7 +7,8 @@ import { CacheProvider, EmotionCache } from '@emotion/react';
 import createEmotionCache from '../src/createEmotionCache';
 import '@fontsource/rubik'
 import {Box, Container, useMediaQuery} from "@mui/material";
-import {TokenState, Provider, initializeStore, useCreateStore} from "../src/store";
+import {TokenState, Provider, useCreateStore} from "../src/store";
+import {ReactiveAppBar} from "../components/appbar";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -61,6 +62,7 @@ export default function MyApp(props: MyAppProps) {
 				<ThemeProvider theme={theme}>
 					{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
 					<CssBaseline />
+					<ReactiveAppBar />
 					<Container maxWidth="sm">
 						<Box sx={{ my: 4 }}>
 							<Component {...pageProps} />

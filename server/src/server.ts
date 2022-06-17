@@ -317,17 +317,28 @@ export const WebApiApp = App()
       }
     }
   })
-  .get("/profile", (res, req) => {
-    const user = isAuthenticated(req);
+  .get("/profile", async (res, req) => {
+    res.onAborted(() => {
+      res.aborted = true;
+    });
 
-    if (!user) {
+    const auth = isAuthenticated(req);
+
+    if (!auth) {
       res.writeStatus("401 Unauthorized");
       setupCors(res);
-      res.end("401 Unauthorized");
+      if (!res.aborted) {
+        res.end("401 Unauthorized");
+      }
     } else {
       res.writeStatus("200 OK");
       setupCors(res);
-      res.end(encode("hi"));
+
+      const user = await findUserById(auth.userId);
+
+      if (!res.aborted) {
+        res.end(encode(user));
+      }
     }
   })
   .any("/*", (res) => {

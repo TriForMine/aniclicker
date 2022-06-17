@@ -19,13 +19,23 @@ declare type UseContextStore<S extends StoreApi<State>> = {
   ): U;
 };
 
+export interface UserInfo {
+  id: string;
+  username: string;
+  createdAt: Date,
+  updatedAt: Date
+}
+
 export interface TokenState {
   access_token?: string;
   setAccessToken: (access_token: string) => void;
+  setUserInfo: (user_info: UserInfo) => void;
+  user_info?: UserInfo
 }
 
 const initialState: Partial<TokenState> = {
   access_token: undefined,
+  user_info: undefined
 };
 
 const zustandContext = createContext();
@@ -45,6 +55,11 @@ export const initializeStore = (preloadedState?: string) => {
     setAccessToken: (access_token) => {
       set({
         access_token,
+      });
+    },
+    setUserInfo: (user_info) => {
+      set({
+        user_info,
       });
     },
   }));

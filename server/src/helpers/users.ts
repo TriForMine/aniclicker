@@ -36,7 +36,6 @@ export function findUserById(id: string) {
       username: true,
       createdAt: true,
       updatedAt: true,
-      email: true,
     },
     where: {
       id,
