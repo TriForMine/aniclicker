@@ -5,7 +5,7 @@
   "dependencies": {
     "argon2": "^0.28.5",
     "edgedb": "^0.20.10",
-    "fast-jwt": "^1.5.4",
+    "fast-jwt": "^1.6.0",
     "nanoid": "^4.0.0",
     "uWebSockets.js": "uNetworking/uWebSockets.js#v20.10.0"
   },
