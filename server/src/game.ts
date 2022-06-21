@@ -1,6 +1,6 @@
-import { send_message } from "./server.js";
+import { send_message } from "./server";
 import { MESSAGE_ENUM } from "utils";
-import { REQUIRE_UPDATES, SOCKETS } from "./cache.js";
+import { REQUIRE_UPDATES, SOCKETS } from "./cache";
 
 const TICK_LENGTH = 1000 / 20;
 let previous_tick = Date.now();

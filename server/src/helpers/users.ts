@@ -1,44 +1,41 @@
-import { db } from "../utils/db.js";
-import type { User } from "@prisma/client";
+import { builder as e, db } from "../utils/db";
 import * as argon2 from "argon2";
+import type { User } from "../../dbschema/edgeql-js";
 
 export function findUserByEmail(email: User["email"]) {
-  return db.user.findUnique({
-    where: {
-      email,
-    },
-  });
+  const query = e.select(e.User, (user) => ({
+    ...e.User["*"],
+    filter: e.op(user.email, "=", email),
+  }));
+
+  return query.run(db);
 }
 
 export async function createUser(
   user: Pick<User, "username" | "email" | "password">
 ) {
-  return db.user.create({
-    data: {
-      username: user.username,
-      email: user.email,
-      // Following OWASP recommendation
-      // https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#argon2id
-      password: await argon2.hash(user.password, {
-        type: 2,
-        memoryCost: 1 << 14,
-        timeCost: 2,
-        parallelism: 1,
-      }),
-    },
+  const query = e.insert(e.User, {
+    username: user.username,
+    email: user.email,
+    password: await argon2.hash(user.password, {
+      type: 2,
+      memoryCost: 1 << 14,
+      timeCost: 2,
+      parallelism: 1,
+    }),
   });
+
+  return await query.run(db);
 }
 
 export function findUserById(id: string) {
-  return db.user.findUnique({
-    select: {
-      id: true,
-      username: true,
-      createdAt: true,
-      updatedAt: true,
-    },
-    where: {
-      id,
-    },
-  });
+  const query = e.select(e.User, (user) => ({
+    id: true,
+    username: true,
+    createdAt: true,
+    updatedAt: true,
+    filter: e.op(user.id, "=", e.uuid(id)),
+  }));
+
+  return query.run(db);
 }

@@ -1,7 +1,7 @@
-import { GameLoop } from "./game.js";
-import { logger } from "./utils/logger.js";
-import { WebApiApp } from "./server.js";
-import { PORT } from "./config.js";
+import { GameLoop } from "./game";
+import { logger } from "./utils/logger";
+import { WebApiApp } from "./server";
+import { PORT } from "./config";
 
 GameLoop();
 

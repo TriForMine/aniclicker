@@ -1,44 +1,47 @@
-import { db } from "../utils/db.js";
-import { hashToken } from "../utils/hashToken.js";
-import type { User, RefreshToken } from "@prisma/client";
+import { builder as e, db } from "../utils/db";
+import { hashToken } from "../utils/hashToken";
+import type { RefreshToken, User } from "../../dbschema/edgeql-js";
 
 export function saveRefreshToken(
   jti: RefreshToken["id"],
   refreshToken: string,
   userId: User["id"]
 ) {
-  return db.refreshToken.create({
-    data: {
-      id: jti,
-      hashedToken: hashToken(refreshToken),
-      userId,
-    },
+  const query = e.insert(e.RefreshToken, {
+    jti: e.uuid(jti),
+    hashedToken: hashToken(refreshToken),
+    user: e.select(e.User, (user) => ({
+      filter: e.op(user.id, "=", e.uuid(userId)),
+    })),
   });
+
+  return query.run(db);
 }
 
 export function findRefreshTokenById(id: RefreshToken["id"]) {
-  return db.refreshToken.findUnique({
-    where: {
-      id,
-    },
-  });
+  const query = e.select(e.RefreshToken, (token) => ({
+    ...e.RefreshToken["*"],
+    filter: e.op(token.jti, "=", e.uuid(id)),
+  }));
+
+  return query.run(db);
 }
 
 export function deleteRefreshToken(id: RefreshToken["id"]) {
-  return db.refreshToken.delete({
-    where: {
-      id,
-    },
-  });
+  const query = e.delete(e.RefreshToken, (token) => ({
+    filter: e.op(token.jti, "=", e.uuid(id)),
+  }));
+
+  return query.run(db);
 }
 
 export function revokeToken(userId: User["id"]) {
-  return db.refreshToken.updateMany({
-    where: {
-      userId,
-    },
-    data: {
+  const query = e.update(e.RefreshToken, (token) => ({
+    filter: e.op(token.user.id, "=", e.uuid(userId)),
+    set: {
       revoked: true,
     },
-  });
+  }));
+
+  return query.run(db);
 }

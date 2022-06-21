@@ -1,20 +1,20 @@
 import { WebSocket, App, SHARED_COMPRESSOR } from "uWebSockets.js";
 import { nanoid } from "nanoid";
 import { decode, encode, MESSAGE_ENUM } from "utils";
-import { logger } from "./utils/logger.js";
-import { REQUIRE_UPDATES, SOCKETS } from "./cache.js";
-import { readCbor } from "./utils/parsing.js";
-import { createUser, findUserByEmail, findUserById } from "./helpers/users.js";
+import { logger } from "./utils/logger";
+import { REQUIRE_UPDATES, SOCKETS } from "./cache";
+import { readCbor } from "./utils/parsing";
+import { createUser, findUserByEmail, findUserById } from "./helpers/users";
 import { randomUUID } from "crypto";
-import { generateTokens, verifyRefreshToken } from "./utils/jwt.js";
+import { generateTokens, verifyRefreshToken } from "./utils/jwt";
 import {
   deleteRefreshToken,
   findRefreshTokenById,
   saveRefreshToken,
-} from "./helpers/auth.js";
+} from "./helpers/auth";
 import * as argon2 from "argon2";
-import { isAuthenticated } from "./utils/middlewares.js";
-import setupCors from "./utils/cors.js";
+import { isAuthenticated } from "./utils/middlewares";
+import setupCors from "./utils/cors";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export function broadcast_message(topic: MESSAGE_ENUM, message: any) {
@@ -180,12 +180,16 @@ export const WebApiApp = App()
         const { accessToken, refreshToken } = generateTokens(user.id, jti);
         await saveRefreshToken(jti, refreshToken, user.id);
 
+        res.writeHeader(
+          "Set-Cookie",
+          `refreshToken=${refreshToken}; Path=/; HttpOnly;`
+        );
+
         res.writeStatus("201 Created");
         setupCors(res);
         res.end(
           encode({
             accessToken,
-            refreshToken,
           })
         );
       } catch (e) {
@@ -257,7 +261,7 @@ export const WebApiApp = App()
       const cookies = req.getHeader("cookie");
       const cookieToken = cookies
         .split(";")
-        .filter((cookie) => cookie.split("=")[0] === "refreshToken")
+        .filter((cookie) => cookie.split("=")[0].trim() === "refreshToken")
         .map((cookie) => cookie.split("=")[1])[0];
 
       if (!cookieToken) {

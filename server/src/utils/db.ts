@@ -1,5 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import * as edgedb from "edgedb";
+import builder from "../../dbschema/edgeql-js";
 
-const db = new PrismaClient();
+const db = edgedb.createClient();
 
-export { db };
+export { db, builder };

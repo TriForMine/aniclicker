@@ -1,5 +1,5 @@
 import { HttpRequest } from "uWebSockets.js";
-import { verifyToken } from "./jwt.js";
+import { verifyToken } from "./jwt";
 
 export function isAuthenticated(req: HttpRequest) {
   const authorization = req.getHeader("authorization");
