@@ -188,7 +188,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/react@npm:^11.9.3":
+"@emotion/react@npm:11.9.3":
   version: 11.9.3
   resolution: "@emotion/react@npm:11.9.3"
   dependencies:
@@ -224,7 +224,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/server@npm:^11.4.0":
+"@emotion/server@npm:11.4.0":
   version: 11.4.0
   resolution: "@emotion/server@npm:11.4.0"
   dependencies:
@@ -248,7 +248,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/styled@npm:^11.9.3":
+"@emotion/styled@npm:11.9.3":
   version: 11.9.3
   resolution: "@emotion/styled@npm:11.9.3"
   dependencies:
@@ -308,7 +308,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/rubik@npm:^4.5.10":
+"@fontsource/rubik@npm:4.5.10":
   version: 4.5.10
   resolution: "@fontsource/rubik@npm:4.5.10"
   checksum: 766f4dc67a9545cefe5e8abfce0dfe07929e05044f4c6bd9d39e3a2496fb0d79b26b0523e79628aadda7089997b0621a96dbe7e48a021ec326e0bd336dc542f5
@@ -322,7 +322,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hookform/resolvers@npm:^2.9.1":
+"@hookform/resolvers@npm:2.9.1":
   version: 2.9.1
   resolution: "@hookform/resolvers@npm:2.9.1"
   peerDependencies:
@@ -391,7 +391,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/icons-material@npm:^5.8.4":
+"@mui/icons-material@npm:5.8.4":
   version: 5.8.4
   resolution: "@mui/icons-material@npm:5.8.4"
   dependencies:
@@ -407,7 +407,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/material@npm:^5.8.5":
+"@mui/material@npm:5.8.5":
   version: 5.8.5
   resolution: "@mui/material@npm:5.8.5"
   dependencies:
@@ -802,7 +802,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^18.0.0":
+"@types/node@npm:*, @types/node@npm:18.0.0":
   version: 18.0.0
   resolution: "@types/node@npm:18.0.0"
   checksum: 5d902615a9732fe86ff71edc04b6d35599b447a6fe3b572b12ea002a3460572f8e4d8990bf3983c2890e2335ea8625b78bc51ab542df492ef12e6dcd0da0865a
@@ -823,7 +823,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.0.5":
+"@types/react-dom@npm:18.0.5":
   version: 18.0.5
   resolution: "@types/react-dom@npm:18.0.5"
   dependencies:
@@ -850,7 +850,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^18.0.12":
+"@types/react@npm:*, @types/react@npm:18.0.14":
   version: 18.0.14
   resolution: "@types/react@npm:18.0.14"
   dependencies:
@@ -877,7 +877,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^5.29.0":
+"@typescript-eslint/eslint-plugin@npm:5.29.0":
   version: 5.29.0
   resolution: "@typescript-eslint/eslint-plugin@npm:5.29.0"
   dependencies:
@@ -900,7 +900,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^5.21.0, @typescript-eslint/parser@npm:^5.29.0":
+"@typescript-eslint/parser@npm:5.29.0, @typescript-eslint/parser@npm:^5.21.0":
   version: 5.29.0
   resolution: "@typescript-eslint/parser@npm:5.29.0"
   dependencies:
@@ -1074,8 +1074,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "aniclicker@workspace:."
   dependencies:
-    concurrently: "npm:^7.2.2"
-    tsc-watch: "npm:^5.0.3"
+    concurrently: "npm:7.2.2"
+    tsc-watch: "npm:5.0.3"
   languageName: unknown
   linkType: soft
 
@@ -1262,7 +1262,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios-auth-refresh@npm:^3.3.1":
+"axios-auth-refresh@npm:3.3.1":
   version: 3.3.1
   resolution: "axios-auth-refresh@npm:3.3.1"
   peerDependencies:
@@ -1271,7 +1271,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.27.2":
+"axios@npm:0.27.2":
   version: 0.27.2
   resolution: "axios@npm:0.27.2"
   dependencies:
@@ -1689,7 +1689,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"concurrently@npm:^7.2.2":
+"concurrently@npm:7.2.2":
   version: 7.2.2
   resolution: "concurrently@npm:7.2.2"
   dependencies:
@@ -2154,7 +2154,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-prettier@npm:^8.5.0":
+"eslint-config-prettier@npm:8.5.0":
   version: 8.5.0
   resolution: "eslint-config-prettier@npm:8.5.0"
   peerDependencies:
@@ -2175,7 +2175,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-import-resolver-typescript@npm:^2.7.1":
+"eslint-import-resolver-typescript@npm:2.7.1, eslint-import-resolver-typescript@npm:^2.7.1":
   version: 2.7.1
   resolution: "eslint-import-resolver-typescript@npm:2.7.1"
   dependencies:
@@ -2213,7 +2213,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-import@npm:^2.26.0":
+"eslint-plugin-import@npm:2.26.0, eslint-plugin-import@npm:^2.26.0":
   version: 2.26.0
   resolution: "eslint-plugin-import@npm:2.26.0"
   dependencies:
@@ -2258,7 +2258,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-node@npm:^11.1.0":
+"eslint-plugin-node@npm:11.1.0":
   version: 11.1.0
   resolution: "eslint-plugin-node@npm:11.1.0"
   dependencies:
@@ -2274,7 +2274,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-prettier@npm:^4.0.0":
+"eslint-plugin-prettier@npm:4.0.0":
   version: 4.0.0
   resolution: "eslint-plugin-prettier@npm:4.0.0"
   dependencies:
@@ -2383,7 +2383,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.17.0":
+"eslint@npm:8.18.0":
   version: 8.18.0
   resolution: "eslint@npm:8.18.0"
   dependencies:
@@ -3582,10 +3582,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"kleur@npm:^3.0.3":
-  version: 3.0.3
-  resolution: "kleur@npm:3.0.3"
-  checksum: 91b79c93267542395ca98bed81ba1e10184de1738734938fdc2ac36c6884e75e8ca9e232d8a411056b4339904c47d0162795e66674cafa210fd5c2b0d930e1a4
+"kleur@npm:^4.0.1":
+  version: 4.1.4
+  resolution: "kleur@npm:4.1.4"
+  checksum: ced21c493a4ab415e036ab05e23012d9869b21fee709ac8dad28b7dc2238191ce9c63e3bb743706f798a39081c31d2a7a67aa425767b578661f63d7bdf564393
   languageName: node
   linkType: hard
 
@@ -3978,7 +3978,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-seo@npm:^5.4.0":
+"next-seo@npm:5.4.0":
   version: 5.4.0
   resolution: "next-seo@npm:5.4.0"
   peerDependencies:
@@ -4114,9 +4114,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemon@npm:^2.0.16":
-  version: 2.0.16
-  resolution: "nodemon@npm:2.0.16"
+"nodemon@npm:2.0.18":
+  version: 2.0.18
+  resolution: "nodemon@npm:2.0.18"
   dependencies:
     chokidar: "npm:^3.5.2"
     debug: "npm:^3.2.7"
@@ -4130,7 +4130,7 @@ __metadata:
     update-notifier: "npm:^5.1.0"
   bin:
     nodemon: bin/nodemon.js
-  checksum: 9f5bc74f34f862aee49c6cc17a90b72aa993a702c9ccadbd0e1f28da1d1184f0e678ea853fa97c1d87823d9a1a8e87c3b7af46ef4281c72416ee31823eb9c241
+  checksum: 128c85aeeaaac475b48674d4dbbd2ada571fa702a4d4e8c3bbc2d464e45bb779684a35452056a01e947bbbf57664e3c7ba52066172a3f8579be4a3acf0dc0e94
   languageName: node
   linkType: hard
 
@@ -4191,9 +4191,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"npm-check-updates@npm:^14.0.1":
-  version: 14.0.2
-  resolution: "npm-check-updates@npm:14.0.2"
+"npm-check-updates@npm:14.1.0":
+  version: 14.1.0
+  resolution: "npm-check-updates@npm:14.1.0"
   dependencies:
     chalk: "npm:^4.1.2"
     cint: "npm:^8.2.1"
@@ -4213,7 +4213,7 @@ __metadata:
     pacote: "npm:^13.6.0"
     parse-github-url: "npm:^1.0.2"
     progress: "npm:^2.0.3"
-    prompts: "npm:^2.4.2"
+    prompts: "git+https://github.com/raineorshine/prompts.git#ncu"
     rc-config-loader: "npm:^4.1.0"
     remote-git-tags: "npm:^3.0.0"
     rimraf: "npm:^3.0.2"
@@ -4226,7 +4226,7 @@ __metadata:
   bin:
     ncu: build/src/bin/cli.js
     npm-check-updates: build/src/bin/cli.js
-  checksum: 9fb9458f7b3a25e090dc3afe0fc9b8a680f3fca894493b8a085ad10cc1508c5aeb3928cf46455d854cc8b72c2cebe9807b2a97c19818b90a213c752429ebc3b0
+  checksum: 0587eeabfb1fa0640ebf080f2a632cf5ee36c2253a92df68b921ce064ecf0e5ab4bddfa1b99611329320920cc9b39acd0859c54b1f2e74fc9e9ff22f929a44a8
   languageName: node
   linkType: hard
 
@@ -4657,7 +4657,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pino-pretty@npm:^8.1.0":
+"pino-pretty@npm:8.1.0":
   version: 8.1.0
   resolution: "pino-pretty@npm:8.1.0"
   dependencies:
@@ -4688,7 +4688,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pino@npm:^8.0.0":
+"pino@npm:8.1.0":
   version: 8.1.0
   resolution: "pino@npm:8.1.0"
   dependencies:
@@ -4743,7 +4743,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.7.1":
+"prettier@npm:2.7.1":
   version: 2.7.1
   resolution: "prettier@npm:2.7.1"
   bin:
@@ -4797,13 +4797,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prompts@npm:^2.4.2":
+"prompts@git+https://github.com/raineorshine/prompts.git#ncu":
   version: 2.4.2
-  resolution: "prompts@npm:2.4.2"
+  resolution: "prompts@https://github.com/raineorshine/prompts.git#commit=79225ff95ff06c4e1e9f4862114a5bbae6690251"
   dependencies:
-    kleur: "npm:^3.0.3"
+    kleur: "npm:^4.0.1"
     sisteransi: "npm:^1.0.5"
-  checksum: 3fc5daab8c24a88bceee525b736b255a5b5838676e626d1c401a92925b4c33562b4e424d51770946b898e73d1bf36f0677bd8b3f7b75d1e7cfe838d6dbfc9259
+  checksum: 487c88b0b4869d1431312e89fe9e6b1082c2fca55b090c81613c9f6956f35e2087082f2e41ec9191fbe8cddb8e7afedea0f58536d444561654c29e21df3cf8f3
   languageName: node
   linkType: hard
 
@@ -4902,7 +4902,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^18.2.0":
+"react-dom@npm:18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
   dependencies:
@@ -4914,7 +4914,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:^7.32.1":
+"react-hook-form@npm:7.32.2":
   version: 7.32.2
   resolution: "react-hook-form@npm:7.32.2"
   peerDependencies:
@@ -4952,7 +4952,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-use-websocket@npm:^4.2.0":
+"react-use-websocket@npm:4.2.0":
   version: 4.2.0
   resolution: "react-use-websocket@npm:4.2.0"
   peerDependencies:
@@ -4962,7 +4962,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^18.2.0":
+"react@npm:18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
   dependencies:
@@ -5324,25 +5324,25 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "server@workspace:server"
   dependencies:
-    "@types/node": "npm:^18.0.0"
-    "@typescript-eslint/eslint-plugin": "npm:^5.29.0"
-    "@typescript-eslint/parser": "npm:^5.29.0"
+    "@types/node": "npm:18.0.0"
+    "@typescript-eslint/eslint-plugin": "npm:5.29.0"
+    "@typescript-eslint/parser": "npm:5.29.0"
     argon2: "npm:^0.28.5"
     edgedb: "npm:^0.20.10"
-    eslint: "npm:^8.17.0"
-    eslint-config-prettier: "npm:^8.5.0"
-    eslint-import-resolver-typescript: "npm:^2.7.1"
-    eslint-plugin-import: "npm:^2.26.0"
-    eslint-plugin-node: "npm:^11.1.0"
-    eslint-plugin-prettier: "npm:^4.0.0"
+    eslint: "npm:8.18.0"
+    eslint-config-prettier: "npm:8.5.0"
+    eslint-import-resolver-typescript: "npm:2.7.1"
+    eslint-plugin-import: "npm:2.26.0"
+    eslint-plugin-node: "npm:11.1.0"
+    eslint-plugin-prettier: "npm:4.0.0"
     fast-jwt: "npm:^1.6.0"
     nanoid: "npm:^4.0.0"
-    nodemon: "npm:^2.0.16"
-    npm-check-updates: "npm:^14.0.1"
-    pino: "npm:^8.0.0"
-    pino-pretty: "npm:^8.1.0"
-    prettier: "npm:^2.7.1"
-    typescript: "npm:^4.7.4"
+    nodemon: "npm:2.0.18"
+    npm-check-updates: "npm:14.1.0"
+    pino: "npm:8.1.0"
+    pino-pretty: "npm:8.1.0"
+    prettier: "npm:2.7.1"
+    typescript: "npm:4.7.4"
     uWebSockets.js: "uNetworking/uWebSockets.js#v20.10.0"
   languageName: unknown
   linkType: soft
@@ -5691,7 +5691,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"superstruct@npm:^0.16.0":
+"superstruct@npm:0.16.0":
   version: 0.16.0
   resolution: "superstruct@npm:0.16.0"
   checksum: 8b3c727d5a534e3bbada58759ad349a67b3fb64803cf1746b8b86a3ee3a3c024bba6bd39715328e66ab7c82d93789e7d2495c8c0ca92b5563b8ef8506f8451e9
@@ -5732,7 +5732,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"swr@npm:^1.3.0":
+"swr@npm:1.3.0":
   version: 1.3.0
   resolution: "swr@npm:1.3.0"
   peerDependencies:
@@ -5838,7 +5838,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsc-watch@npm:^5.0.3":
+"tsc-watch@npm:5.0.3":
   version: 5.0.3
   resolution: "tsc-watch@npm:5.0.3"
   dependencies:
@@ -5917,7 +5917,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:4.7, typescript@npm:^4.7.4":
+"typescript@npm:4.7.4":
   version: 4.7.4
   resolution: "typescript@npm:4.7.4"
   bin:
@@ -5927,7 +5927,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A4.7#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^4.7.4#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A4.7.4#optional!builtin<compat/typescript>":
   version: 4.7.4
   resolution: "typescript@patch:typescript@npm%3A4.7.4#optional!builtin<compat/typescript>::version=4.7.4&hash=7ad353"
   bin:
@@ -6051,7 +6051,7 @@ __metadata:
   resolution: "utils@workspace:utils"
   dependencies:
     cbor-x: "npm:^1.3.1"
-    typescript: "npm:^4.7.4"
+    typescript: "npm:4.7.4"
   languageName: unknown
   linkType: soft
 
@@ -6085,30 +6085,30 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "web@workspace:web"
   dependencies:
-    "@emotion/react": "npm:^11.9.3"
-    "@emotion/server": "npm:^11.4.0"
-    "@emotion/styled": "npm:^11.9.3"
-    "@fontsource/rubik": "npm:^4.5.10"
-    "@hookform/resolvers": "npm:^2.9.1"
-    "@mui/icons-material": "npm:^5.8.4"
-    "@mui/material": "npm:^5.8.5"
-    "@types/node": "npm:^18.0.0"
-    "@types/react": "npm:^18.0.12"
-    "@types/react-dom": "npm:^18.0.5"
-    axios: "npm:^0.27.2"
-    axios-auth-refresh: "npm:^3.3.1"
+    "@emotion/react": "npm:11.9.3"
+    "@emotion/server": "npm:11.4.0"
+    "@emotion/styled": "npm:11.9.3"
+    "@fontsource/rubik": "npm:4.5.10"
+    "@hookform/resolvers": "npm:2.9.1"
+    "@mui/icons-material": "npm:5.8.4"
+    "@mui/material": "npm:5.8.5"
+    "@types/node": "npm:18.0.0"
+    "@types/react": "npm:18.0.14"
+    "@types/react-dom": "npm:18.0.5"
+    axios: "npm:0.27.2"
+    axios-auth-refresh: "npm:3.3.1"
     eslint-config-next: "npm:12.1.6"
-    eslint-config-prettier: "npm:^8.5.0"
+    eslint-config-prettier: "npm:8.5.0"
     next: "npm:latest"
-    next-seo: "npm:^5.4.0"
-    react: "npm:^18.2.0"
-    react-dom: "npm:^18.2.0"
-    react-hook-form: "npm:^7.32.1"
-    react-use-websocket: "npm:^4.2.0"
-    superstruct: "npm:^0.16.0"
-    swr: "npm:^1.3.0"
-    typescript: "npm:4.7"
-    zustand: "npm:^4.0.0-rc.1"
+    next-seo: "npm:5.4.0"
+    react: "npm:18.2.0"
+    react-dom: "npm:18.2.0"
+    react-hook-form: "npm:7.32.2"
+    react-use-websocket: "npm:4.2.0"
+    superstruct: "npm:0.16.0"
+    swr: "npm:1.3.0"
+    typescript: "npm:4.7.4"
+    zustand: "npm:4.0.0-rc.1"
   languageName: unknown
   linkType: soft
 
@@ -6281,7 +6281,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zustand@npm:^4.0.0-rc.1":
+"zustand@npm:4.0.0-rc.1":
   version: 4.0.0-rc.1
   resolution: "zustand@npm:4.0.0-rc.1"
   dependencies:

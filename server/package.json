@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "0.0.1",
-  "packageManager": "yarn@4.0.0-rc.6",
+  "packageManager": "yarn@4.0.0-rc.9",
   "dependencies": {
     "argon2": "^0.28.5",
     "edgedb": "^0.20.10",
@@ -33,7 +33,7 @@
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-prettier": "4.0.0",
     "nodemon": "2.0.18",
-    "npm-check-updates": "14.0.2",
+    "npm-check-updates": "14.1.0",
     "pino": "8.1.0",
     "pino-pretty": "8.1.0",
     "prettier": "2.7.1",
