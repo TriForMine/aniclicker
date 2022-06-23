@@ -1,7 +1,7 @@
 {
   "name": "utils",
   "version": "0.0.1",
-  "packageManager": "yarn@4.0.0-rc.6",
+  "packageManager": "yarn@4.0.0-rc.9",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "devDependencies": {
