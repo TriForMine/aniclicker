@@ -322,12 +322,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hookform/resolvers@npm:2.9.1":
-  version: 2.9.1
-  resolution: "@hookform/resolvers@npm:2.9.1"
+"@hookform/resolvers@npm:2.9.2":
+  version: 2.9.2
+  resolution: "@hookform/resolvers@npm:2.9.2"
   peerDependencies:
     react-hook-form: ^7.0.0
-  checksum: d2121d07d39eb326b8506b7ed7c09d9e4272791d89acf4857c11dd285c808b3b1a092962504e1c5add1a1f45c68df68a2d4642edf631fd46aedde486f1c96f35
+  checksum: efedf66a9b74c5a6e6519b6056f83f7f3d6ad3b3dd18b87ea09dd51b03d110698a6396eae07d50e10642b87a122b00e2f685e6ff73e4fb0f195d8b440c07e311
   languageName: node
   linkType: hard
 
@@ -4191,9 +4191,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"npm-check-updates@npm:14.1.0":
-  version: 14.1.0
-  resolution: "npm-check-updates@npm:14.1.0"
+"npm-check-updates@npm:14.1.1":
+  version: 14.1.1
+  resolution: "npm-check-updates@npm:14.1.1"
   dependencies:
     chalk: "npm:^4.1.2"
     cint: "npm:^8.2.1"
@@ -4213,7 +4213,7 @@ __metadata:
     pacote: "npm:^13.6.0"
     parse-github-url: "npm:^1.0.2"
     progress: "npm:^2.0.3"
-    prompts: "git+https://github.com/raineorshine/prompts.git#ncu"
+    prompts-ncu: "npm:^2.5.0"
     rc-config-loader: "npm:^4.1.0"
     remote-git-tags: "npm:^3.0.0"
     rimraf: "npm:^3.0.2"
@@ -4226,7 +4226,7 @@ __metadata:
   bin:
     ncu: build/src/bin/cli.js
     npm-check-updates: build/src/bin/cli.js
-  checksum: 0587eeabfb1fa0640ebf080f2a632cf5ee36c2253a92df68b921ce064ecf0e5ab4bddfa1b99611329320920cc9b39acd0859c54b1f2e74fc9e9ff22f929a44a8
+  checksum: edd50cdae80125d2674205bbcb408f125abbca31b3057f92b563f4c9f0c7e5391ee342fe8392447a73da833402dedc2a64552c19d33f1afbf68edef859b9f06f
   languageName: node
   linkType: hard
 
@@ -4797,13 +4797,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prompts@git+https://github.com/raineorshine/prompts.git#ncu":
-  version: 2.4.2
-  resolution: "prompts@https://github.com/raineorshine/prompts.git#commit=79225ff95ff06c4e1e9f4862114a5bbae6690251"
+"prompts-ncu@npm:^2.5.0":
+  version: 2.5.0
+  resolution: "prompts-ncu@npm:2.5.0"
   dependencies:
     kleur: "npm:^4.0.1"
     sisteransi: "npm:^1.0.5"
-  checksum: 487c88b0b4869d1431312e89fe9e6b1082c2fca55b090c81613c9f6956f35e2087082f2e41ec9191fbe8cddb8e7afedea0f58536d444561654c29e21df3cf8f3
+  checksum: 39c789a22c3c45720f19885df649b9112edc7a5d65d1c5cdc4f6548538f5282a5bca0f9620624ef72f2e1d9f1b28b57bb87938022a78e95ce1c87761a6c42edc
   languageName: node
   linkType: hard
 
@@ -5338,7 +5338,7 @@ __metadata:
     fast-jwt: "npm:^1.6.0"
     nanoid: "npm:^4.0.0"
     nodemon: "npm:2.0.18"
-    npm-check-updates: "npm:14.1.0"
+    npm-check-updates: "npm:14.1.1"
     pino: "npm:8.1.0"
     pino-pretty: "npm:8.1.0"
     prettier: "npm:2.7.1"
@@ -6089,7 +6089,7 @@ __metadata:
     "@emotion/server": "npm:11.4.0"
     "@emotion/styled": "npm:11.9.3"
     "@fontsource/rubik": "npm:4.5.10"
-    "@hookform/resolvers": "npm:2.9.1"
+    "@hookform/resolvers": "npm:2.9.2"
     "@mui/icons-material": "npm:5.8.4"
     "@mui/material": "npm:5.8.5"
     "@types/node": "npm:18.0.0"
