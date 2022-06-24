@@ -4914,12 +4914,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:7.32.2":
-  version: 7.32.2
-  resolution: "react-hook-form@npm:7.32.2"
+"react-hook-form@npm:7.33.0":
+  version: 7.33.0
+  resolution: "react-hook-form@npm:7.33.0"
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
-  checksum: e632620c7c34a5429001a1804530ced694faf7a0723a1f666f3568b8b6e56f63921718918ba820f73a4fee6405daba50b5d9dd2cb6d7ffe4a0326feae84c4dbf
+  checksum: c27560ebba3562d3cb7a66bfba2e0e915f875999aaa524af0c99d2459d198a04627c6a53f96556183290edc5589657be21a3a12b6d940ddd8a7a1309ab5a6e6a
   languageName: node
   linkType: hard
 
@@ -6103,7 +6103,7 @@ __metadata:
     next-seo: "npm:5.4.0"
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
-    react-hook-form: "npm:7.32.2"
+    react-hook-form: "npm:7.33.0"
     react-use-websocket: "npm:4.2.0"
     superstruct: "npm:0.16.0"
     swr: "npm:1.3.0"
