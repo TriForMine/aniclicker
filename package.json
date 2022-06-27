@@ -1,7 +1,7 @@
 {
   "name": "aniclicker",
   "version": "0.0.1",
-  "packageManager": "yarn@4.0.0-rc.9",
+  "packageManager": "yarn@4.0.0-rc.10",
   "private": true,
   "workspaces": [
     "web",

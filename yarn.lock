@@ -322,12 +322,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@hookform/resolvers@npm:2.9.2":
-  version: 2.9.2
-  resolution: "@hookform/resolvers@npm:2.9.2"
+"@hookform/resolvers@npm:2.9.3":
+  version: 2.9.3
+  resolution: "@hookform/resolvers@npm:2.9.3"
   peerDependencies:
     react-hook-form: ^7.0.0
-  checksum: efedf66a9b74c5a6e6519b6056f83f7f3d6ad3b3dd18b87ea09dd51b03d110698a6396eae07d50e10642b87a122b00e2f685e6ff73e4fb0f195d8b440c07e311
+  checksum: 35a3545a3f66a9595cc297f61ab2caf7060c433abe9dfa3159ca008a58aa66f06598336a83c7b8db1b0556b32df464ae301e64e45f1177289be59ad2614ba984
   languageName: node
   linkType: hard
 
@@ -5929,7 +5929,7 @@ __metadata:
 
 "typescript@patch:typescript@npm%3A4.7.4#optional!builtin<compat/typescript>":
   version: 4.7.4
-  resolution: "typescript@patch:typescript@npm%3A4.7.4#optional!builtin<compat/typescript>::version=4.7.4&hash=7ad353"
+  resolution: "typescript@patch:typescript@npm%3A4.7.4#optional!builtin<compat/typescript>::version=4.7.4&hash=f456af"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
@@ -6089,7 +6089,7 @@ __metadata:
     "@emotion/server": "npm:11.4.0"
     "@emotion/styled": "npm:11.9.3"
     "@fontsource/rubik": "npm:4.5.10"
-    "@hookform/resolvers": "npm:2.9.2"
+    "@hookform/resolvers": "npm:2.9.3"
     "@mui/icons-material": "npm:5.8.4"
     "@mui/material": "npm:5.8.5"
     "@types/node": "npm:18.0.0"
