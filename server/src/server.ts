@@ -1,20 +1,20 @@
 import { WebSocket, App, SHARED_COMPRESSOR } from "uWebSockets.js";
 import { nanoid } from "nanoid";
 import { decode, encode, MESSAGE_ENUM } from "utils";
-import { logger } from "./utils/logger";
+import { logger } from "./helpers/logger";
 import { REQUIRE_UPDATES, SOCKETS } from "./cache";
-import { readCbor } from "./utils/parsing";
+import { readCbor } from "./helpers/parsing";
 import { createUser, findUserByEmail, findUserById } from "./helpers/users";
 import { randomUUID } from "crypto";
-import { generateTokens, verifyRefreshToken } from "./utils/jwt";
+import { generateTokens, verifyRefreshToken } from "./helpers/jwt";
 import {
   deleteRefreshToken,
   findRefreshTokenById,
   saveRefreshToken,
 } from "./helpers/auth";
 import * as argon2 from "argon2";
-import { isAuthenticated } from "./utils/middlewares";
-import setupCors from "./utils/cors";
+import { isAuthenticated } from "./helpers/middlewares";
+import setupCors from "./helpers/cors";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export function broadcast_message(topic: MESSAGE_ENUM, message: any) {

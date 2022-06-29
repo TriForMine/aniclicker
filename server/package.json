@@ -13,6 +13,7 @@
     "node": ">=16.0.0"
   },
   "main": "dist/src/index.js",
+  "exports": "./dist/src/index.js",
   "type": "module",
   "scripts": {
     "prebuild": "yarn edgeql-js --output-dir dist/dbschema/edgeql-js --target esm",

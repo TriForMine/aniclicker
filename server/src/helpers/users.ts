@@ -1,4 +1,4 @@
-import { builder as e, db } from "../utils/db";
+import { builder as e, db } from "./db";
 import * as argon2 from "argon2";
 import type { User } from "../../dbschema/edgeql-js";
 

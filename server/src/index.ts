@@ -1,5 +1,5 @@
 import { GameLoop } from "./game";
-import { logger } from "./utils/logger";
+import { logger } from "./helpers/logger";
 import { WebApiApp } from "./server";
 import { PORT } from "./config";
 

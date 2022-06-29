@@ -1,5 +1,5 @@
-import { builder as e, db } from "../utils/db";
-import { hashToken } from "../utils/hashToken";
+import { builder as e, db } from "../helpers/db";
+import { hashToken } from "./hashToken";
 import type { RefreshToken, User } from "../../dbschema/edgeql-js";
 
 export function saveRefreshToken(
