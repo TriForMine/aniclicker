@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "0.0.1",
-  "packageManager": "yarn@4.0.0-rc.10",
+  "packageManager": "yarn@2.4.3",
   "dependencies": {
     "argon2": "^0.28.5",
     "edgedb": "^0.20.10",
