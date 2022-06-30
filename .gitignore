@@ -10,3 +10,5 @@ yarn-error.log/
 .pnp.*
 .idea/
 .vscode/
+utils/tsconfig.tsbuildinfo
+server/tsconfig.tsbuildinfo

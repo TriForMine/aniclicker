@@ -72,36 +72,45 @@ export const WebApiApp = App()
         return;
       }
 
-      const payload = verifyRefreshToken(cookieToken);
+      try {
+        const payload = verifyRefreshToken(cookieToken);
 
-      findRefreshTokenById(payload.jti).then((savedRefreshToken) => {
-        if (!savedRefreshToken || savedRefreshToken.revoked) {
-          res.writeStatus("401");
-          setupCors(res);
-          if (!res.aborted) {
-            res.end("Unauthorized");
-          }
-          return;
-        }
-
-        findUserById(payload.userId).then((user) => {
-          if (upgradeAborted.aborted) {
+        findRefreshTokenById(payload.jti).then((savedRefreshToken) => {
+          if (!savedRefreshToken || savedRefreshToken.revoked) {
+            res.writeStatus("401");
+            setupCors(res);
+            if (!res.aborted) {
+              res.end("Unauthorized");
+            }
             return;
           }
 
-          /* This immediately calls open handler, you must not use res after this call */
-          res.upgrade(
-            {
-              user,
-            },
-            /* Spell these correctly */
-            secWebSocketKey,
-            secWebSocketProtocol,
-            secWebSocketExtensions,
-            context
-          );
+          findUserById(payload.userId).then((user) => {
+            if (upgradeAborted.aborted) {
+              return;
+            }
+
+            /* This immediately calls open handler, you must not use res after this call */
+            res.upgrade(
+              {
+                user,
+              },
+              /* Spell these correctly */
+              secWebSocketKey,
+              secWebSocketProtocol,
+              secWebSocketExtensions,
+              context
+            );
+          });
         });
-      });
+      } catch (err) {
+        res.writeStatus("401");
+        setupCors(res);
+        if (!res.aborted) {
+          res.end("Unauthorized");
+        }
+        return;
+      }
 
       res.onAborted(() => {
         /* We can simply signal that we were aborted */
