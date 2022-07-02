@@ -8,8 +8,11 @@ import { initializeStore, useStore } from "../src/store";
 import { NextSeo } from "next-seo";
 import React from "react";
 import { GetServerSideProps } from "next";
+import {useRouter} from "next/router";
 
 function IndexPage() {
+  const router = useRouter();
+
   const { access_token, setAccessToken, user_info } = useStore((store) => ({
     access_token: store.access_token,
     user_info: store.user_info,
@@ -66,13 +69,19 @@ function IndexPage() {
       "test@triformine.dev",
       "password"
     );
-    if (accessToken) setAccessToken(accessToken);
-  }, [setAccessToken]);
+    if (accessToken) {
+      setAccessToken(accessToken);
+      await router.replace(router.asPath);
+    }
+  }, [router, setAccessToken]);
 
   const handleClickLogin = useCallback(async () => {
     const accessToken = await login("test@triformine.dev", "password");
-    if (accessToken) setAccessToken(accessToken);
-  }, [setAccessToken]);
+    if (accessToken) {
+      setAccessToken(accessToken);
+      await router.replace(router.asPath);
+    }
+  }, [router, setAccessToken]);
 
   const handleClickProfile = useCallback(() => {
     profile(access_token).then((data) => {
