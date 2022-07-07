@@ -63,18 +63,6 @@ function IndexPage() {
     [sendMessage]
   );
 
-  const handleClickRegister = useCallback(async () => {
-    const accessToken = await register(
-      "TriForMine",
-      "test@triformine.dev",
-      "password"
-    );
-    if (accessToken) {
-      setAccessToken(accessToken);
-      await router.replace(router.asPath);
-    }
-  }, [router, setAccessToken]);
-
   const handleClickLogin = useCallback(async () => {
     const accessToken = await login("test@triformine.dev", "password");
     if (accessToken) {
@@ -93,15 +81,6 @@ function IndexPage() {
     return (
       <>
         <NextSeo title="AniClicker" />
-        <Button
-          color="success"
-          variant="contained"
-          disabled={!!access_token}
-          onClick={handleClickRegister}
-        >
-          Click Me to Register
-        </Button>
-        <br />
         <Button
           color="success"
           variant="contained"

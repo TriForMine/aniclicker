@@ -23,7 +23,8 @@ export async function login(email: string, password: string) {
 export async function register(
   username: string,
   email: string,
-  password: string
+  password: string,
+  confirmPassword: string
 ) {
   try {
     const res = await api.post(
@@ -32,16 +33,17 @@ export async function register(
         username,
         email,
         password,
+        confirmPassword
       },
       {
         withCredentials: true,
       }
     );
 
-    const { accessToken } = res.data;
-    return accessToken;
+    const { accessToken, message } = res.data;
+    return {accessToken, message};
   } catch (err) {
-    return false;
+    return {message: 'Une erreur est survenue'};
   }
 }
 
