@@ -33,7 +33,7 @@ export async function register(
         username,
         email,
         password,
-        confirmPassword
+        confirmPassword,
       },
       {
         withCredentials: true,
@@ -41,9 +41,9 @@ export async function register(
     );
 
     const { accessToken, message } = res.data;
-    return {accessToken, message};
+    return { accessToken, message };
   } catch (err) {
-    return {message: 'Une erreur est survenue'};
+    return { message: "Une erreur est survenue" };
   }
 }
 
