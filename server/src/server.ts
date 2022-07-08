@@ -203,7 +203,7 @@ export const WebApiApp = App()
         res.end(
           encode({
             message:
-              "Un lien pour activée votre compte à était envoyer à l'adressse email que vous avez fourni.",
+              "A link to activate your account has been sent to your email.",
             accessToken,
           })
         );
@@ -213,7 +213,7 @@ export const WebApiApp = App()
         res.end(
           encode({
             message:
-              "Un lien pour activée votre compte à était envoyer à l'adressse email que vous avez fourni.",
+              "A link to activate your account has been sent to your email.",
           })
         );
       }
@@ -238,7 +238,9 @@ export const WebApiApp = App()
       const existingUser = await findUserByEmail(data.email);
 
       if (!existingUser) {
-        return res.writeStatus("403").end("Invalid login credentials");
+        res.writeStatus("403");
+        setupCors(res);
+        return res.end(encode({ message: "Invalid login credentials" }));
       }
 
       const validPassword = await argon2.verify(
@@ -246,7 +248,9 @@ export const WebApiApp = App()
         data.password
       );
       if (!validPassword) {
-        return res.writeStatus("403").end("Invalid login credentials");
+        res.writeStatus("403");
+        setupCors(res);
+        return res.end(encode({ message: "Invalid login credentials" }));
       }
 
       const jti = randomUUID();
@@ -266,6 +270,7 @@ export const WebApiApp = App()
       res.end(
         encode({
           accessToken,
+          message: "You are now logged in",
         })
       );
     } catch (err) {

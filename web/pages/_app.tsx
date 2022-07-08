@@ -63,11 +63,11 @@ export default function MyApp(props: MyAppProps) {
 				<ThemeProvider theme={theme}>
 					{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
 					<CssBaseline />
-					<ReactiveAppBar />
 					<SnackbarProvider anchorOrigin={{
 						vertical: 'top',
 						horizontal: 'center',
 					}}>
+						<ReactiveAppBar />
 						<Container maxWidth="sm">
 							<Box sx={{ my: 4 }}>
 								<Component {...pageProps} />

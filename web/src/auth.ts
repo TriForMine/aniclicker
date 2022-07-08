@@ -13,10 +13,13 @@ export async function login(email: string, password: string) {
       }
     );
 
-    const { accessToken } = res.data;
-    return accessToken;
+    const { accessToken, message } = res.data;
+    return { accessToken, message, error: false };
   } catch (err) {
-    return false;
+    if (err.response.data) {
+      return { message: err.response.data.message, error: true };
+    }
+    return { message: 'An error occurred', error: true };
   }
 }
 

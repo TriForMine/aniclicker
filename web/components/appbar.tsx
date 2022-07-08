@@ -16,6 +16,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import Link from "next/link";
 import {useStore} from "../src/store";
 import shallow from "zustand/shallow";
+import {LoginModal} from "./loginModal";
 
 const pages = [
 	{name: 'Home', href: '/'},
@@ -184,15 +185,7 @@ export function ReactiveAppBar() {
 							</Menu>
 						</Box> : <>
 							<Box sx={{ flexGrow: 0 }}>
-								<IconButton
-									size="large"
-									aria-label="login/register button"
-									aria-controls="menu-appbar"
-									aria-haspopup="true"
-									color="inherit"
-								>
-									<LoginIcon />
-								</IconButton>
+								<LoginModal />
 							</Box>
 						</>
 					}

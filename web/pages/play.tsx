@@ -63,34 +63,10 @@ function IndexPage() {
     [sendMessage]
   );
 
-  const handleClickLogin = useCallback(async () => {
-    const accessToken = await login("test@triformine.dev", "password");
-    if (accessToken) {
-      setAccessToken(accessToken);
-      await router.replace(router.asPath);
-    }
-  }, [router, setAccessToken]);
-
-  const handleClickProfile = useCallback(() => {
-    profile(access_token).then((data) => {
-      alert(data.data);
-    });
-  }, [access_token]);
-
   if (!user_info) {
-    return (
-      <>
-        <NextSeo title="AniClicker" />
-        <Button
-          color="success"
-          variant="contained"
-          disabled={!!access_token}
-          onClick={handleClickLogin}
-        >
-          Click Me to Login
-        </Button>
-      </>
-    );
+    return <>
+      <Typography>You need to be logged in.</Typography>
+    </>
   }
 
   return (
