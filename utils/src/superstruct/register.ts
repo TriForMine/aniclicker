@@ -1,5 +1,11 @@
 import { object } from "superstruct";
-import {customSize, customString, email, match, zxcvbnPassword} from "./customStruct";
+import {
+  customSize,
+  customString,
+  email,
+  match,
+  zxcvbnPassword,
+} from "./customStruct";
 
 export const registerStruct = object({
   email: email(),

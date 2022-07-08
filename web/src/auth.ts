@@ -19,7 +19,7 @@ export async function login(email: string, password: string) {
     if (err.response.data) {
       return { message: err.response.data.message, error: true };
     }
-    return { message: 'An error occurred', error: true };
+    return { message: "An error occurred", error: true };
   }
 }
 
