@@ -4,7 +4,9 @@ import { decode, encode } from "utils";
 import { store } from "./store";
 
 const api = axios.create({
-  baseURL: "http://localhost:9001",
+  baseURL: process.env.NODE_ENV === "production"
+      ? "https://api.aniclicker.com/"
+      : "http://localhost:9001/",
   responseType: "arraybuffer",
   transformRequest: [
     function (data) {

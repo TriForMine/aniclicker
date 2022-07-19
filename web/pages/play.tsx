@@ -19,7 +19,9 @@ function IndexPage() {
   }));
 
   const { sendMessage, lastMessage, readyState } =
-    useWebSocket(`ws://localhost:9001`);
+    useWebSocket(process.env.NODE_ENV === "production"
+        ? "wss://api.aniclicker.com"
+        : "ws://localhost:9001");
 
   useEffect(() => {
     if (lastMessage !== null) {

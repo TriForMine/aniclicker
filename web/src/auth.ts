@@ -3,7 +3,7 @@ import api from "./api";
 export async function login(email: string, password: string) {
   try {
     const res = await api.post(
-      "http://localhost:9001/login",
+      "/login",
       {
         email,
         password,
@@ -31,7 +31,7 @@ export async function register(
 ) {
   try {
     const res = await api.post(
-      "http://localhost:9001/register",
+      "/register",
       {
         username,
         email,
@@ -51,7 +51,7 @@ export async function register(
 }
 
 export function profile(access_token) {
-  return api.get("http://localhost:9001/profile", {
+  return api.get("/profile", {
     headers: {
       authorization: `Bearer ${access_token}`,
     },
