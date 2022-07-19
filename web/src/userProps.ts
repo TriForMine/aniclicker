@@ -5,16 +5,18 @@ import { initializeStore } from "./store";
 export const getUserProps: GetServerSideProps = async (context) => {
   const { req, res } = context;
   const cookie = req.headers.cookie;
-  console.log('FETCHING DATA', cookie)
+  console.log("FETCHING DATA", cookie);
   try {
-    const data = await api.post("/refreshToken", null, {
-      headers: {
-        cookie,
-      },
-    }).then((res) => {
-        console.log('DATA', res.data)
+    const data = await api
+      .post("/refreshToken", null, {
+        headers: {
+          cookie,
+        },
+      })
+      .then((res) => {
+        console.log("DATA", res.data);
         return res;
-    });
+      });
 
     res.setHeader("Set-Cookie", data.headers["set-cookie"]);
 
@@ -33,7 +35,7 @@ export const getUserProps: GetServerSideProps = async (context) => {
       props: { initialZustandState: JSON.stringify(zustandStore.getState()) },
     };
   } catch (e) {
-    console.log(e)
+    console.log(e);
     return {
       props: {},
     };
