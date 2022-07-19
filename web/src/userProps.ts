@@ -1,36 +1,36 @@
-import {GetServerSideProps} from "next";
+import { GetServerSideProps } from "next";
 import api from "./api";
-import {initializeStore} from "./store";
+import { initializeStore } from "./store";
 
 export const getUserProps: GetServerSideProps = async (context) => {
-	const { req, res } = context;
-	const cookie = req.headers.cookie;
-	try {
-		const data = await api.post("/refreshToken", null, {
-			headers: {
-				cookie,
-			},
-		});
+  const { req, res } = context;
+  const cookie = req.headers.cookie;
+  try {
+    const data = await api.post("/refreshToken", null, {
+      headers: {
+        cookie,
+      },
+    });
 
-		res.setHeader("Set-Cookie", data.headers["set-cookie"]);
+    res.setHeader("Set-Cookie", data.headers["set-cookie"]);
 
-		const userData = await api.get("/profile", {
-			headers: {
-				authorization: `Bearer ${data.data.accessToken}`,
-			},
-		});
+    const userData = await api.get("/profile", {
+      headers: {
+        authorization: `Bearer ${data.data.accessToken}`,
+      },
+    });
 
-		const zustandStore = initializeStore();
+    const zustandStore = initializeStore();
 
-		zustandStore.getState().setAccessToken(data.data.accessToken);
-		zustandStore.getState().setUserInfo(userData.data);
+    zustandStore.getState().setAccessToken(data.data.accessToken);
+    zustandStore.getState().setUserInfo(userData.data);
 
-		return {
-			props: { initialZustandState: JSON.stringify(zustandStore.getState()) },
-		};
-	} catch (e) {
-		return {
-			props: {},
-		};
-	}
+    return {
+      props: { initialZustandState: JSON.stringify(zustandStore.getState()) },
+    };
+  } catch (e) {
+    return {
+      props: {},
+    };
+  }
 };
