@@ -1,19 +1,17 @@
-import { useCallback, useEffect } from "react";
+import {useCallback, useEffect, useState} from "react";
 import useWebSocket, { ReadyState } from "react-use-websocket";
-import { MESSAGE_ENUM, decode, encode } from "utils";
-import { Button, Typography } from "@mui/material";
-import { login, profile, register } from "../src/auth";
-import api from "../src/api";
-import { initializeStore, useStore } from "../src/store";
+import {MESSAGE_ENUM, decode, encode, GameState} from "utils";
+import {Button, LinearProgress, Typography} from "@mui/material";
+import { useStore } from "../src/store";
 import { NextSeo } from "next-seo";
-import React from "react";
 import { GetServerSideProps } from "next";
-import {useRouter} from "next/router";
+import {getUserProps} from "../src/userProps";
+
 
 function IndexPage() {
-  const router = useRouter();
+  const [gameState, setGameState] = useState<GameState | undefined>(undefined);
 
-  const { access_token, setAccessToken, user_info } = useStore((store) => ({
+  const { user_info } = useStore((store) => ({
     access_token: store.access_token,
     user_info: store.user_info,
     setUserInfo: store.setUserInfo,
@@ -30,6 +28,7 @@ function IndexPage() {
         switch (msg.type) {
           case MESSAGE_ENUM.CLIENT_UPDATE:
             console.log(`Update`, msg.data);
+            setGameState(msg.data);
             break;
           case MESSAGE_ENUM.CLIENT_MESSAGE:
             console.log(`${msg.data.sender} says: ${msg.data.content}`);
@@ -56,8 +55,8 @@ function IndexPage() {
     () =>
       sendMessage(
         encode({
-          type: MESSAGE_ENUM.CLIENT_MESSAGE,
-          data: "Hello world!",
+          type: MESSAGE_ENUM.PLAYER_CLICK,
+          data: Date.now(),
         })
       ),
     [sendMessage]
@@ -69,55 +68,35 @@ function IndexPage() {
     </>
   }
 
+  if (!gameState)
+    return <></>
+
   return (
     <>
       <NextSeo title="AniClicker" />
       <Typography variant="h4" component="h1" gutterBottom>
         Welcome, {user_info.username}!
       </Typography>
+        <Typography variant="body1" component="p" gutterBottom>
+          You have {gameState?.coin ?? 0} coins.
+        </Typography>
+      <LinearProgress sx={{my: 3}} variant="determinate" color="success" value={gameState.health > 0 ? Math.max(1, gameState.health / gameState.max_health * 100) : 0} />
       <Button
         color="success"
         variant="contained"
         onClick={handleClickSendMessage}
         disabled={readyState !== ReadyState.OPEN}
       >
-        Click Me to send &apos;Hello&apos;
+        Attack
       </Button>
     </>
   );
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { req, res } = context;
-  const cookie = req.headers.cookie;
-  try {
-    const data = await api.post("/refreshToken", null, {
-      headers: {
-        cookie,
-      },
-    });
-
-    res.setHeader("Set-Cookie", data.headers["set-cookie"]);
-
-    const userData = await api.get("/profile", {
-      headers: {
-        authorization: `Bearer ${data.data.accessToken}`,
-      },
-    });
-
-    const zustandStore = initializeStore();
-
-    zustandStore.getState().setAccessToken(data.data.accessToken);
-    zustandStore.getState().setUserInfo(userData.data);
-
-    return {
-      props: { initialZustandState: JSON.stringify(zustandStore.getState()) },
-    };
-  } catch (e) {
-    return {
-      props: {},
-    };
+  return {
+    ...(await getUserProps(context)),
   }
-};
+}
 
 export default IndexPage;

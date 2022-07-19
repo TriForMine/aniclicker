@@ -1,17 +1,27 @@
 import { send_message } from "./server";
 import { MESSAGE_ENUM } from "utils";
-import { REQUIRE_UPDATES, SOCKETS } from "./cache";
+import { REQUIRE_UPDATES, SOCKETS, USERS_STATES } from "./cache";
+import { AutoDamage } from "./engine/combat";
 
 const TICK_LENGTH = 1000 / 20;
 let previous_tick = Date.now();
 
 const update = function (delta: number) {
+  for (const id of USERS_STATES.keys()) {
+    const user_state = USERS_STATES.get(id);
+    if (!user_state) continue;
+
+    if (Date.now() - user_state.last_auto > 1000 && AutoDamage(id)) {
+      REQUIRE_UPDATES.add(id);
+    }
+  }
+
   for (const id of REQUIRE_UPDATES) {
     REQUIRE_UPDATES.delete(id);
     const ws = SOCKETS.get(id);
     if (ws) {
       send_message(ws, MESSAGE_ENUM.CLIENT_UPDATE, {
-        coin: 5,
+        ...USERS_STATES.get(id),
         delta,
       });
     }

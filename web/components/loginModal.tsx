@@ -70,10 +70,10 @@ export function LoginModal() {
 						<Tab label="Register" {...a11yProps(1)} />
 					</Tabs>
 					<TabPanel value={value} index={0}>
-						<LoginForm />
+						<LoginForm onSuccess={handleClose} />
 					</TabPanel>
 					<TabPanel value={value} index={1}>
-						<RegisterForm />
+						<RegisterForm onSuccess={handleClose} />
 					</TabPanel>
 				</Box>
 			</Modal>

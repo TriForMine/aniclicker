@@ -8,7 +8,11 @@ import {useRouter} from "next/router";
 import {useStore} from "../src/store";
 import {useSnackbar} from "notistack";
 
-export const RegisterForm = () => {
+interface RegisterFormProps {
+	onSuccess: () => void;
+}
+
+export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
 	const { enqueueSnackbar } = useSnackbar();
 	const router = useRouter();
 
@@ -31,6 +35,7 @@ export const RegisterForm = () => {
 
 					if (accessToken) {
 						setAccessToken(accessToken);
+						onSuccess()
 						await router.replace(router.asPath);
 					}
 				} else {

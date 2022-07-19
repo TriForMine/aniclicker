@@ -16,6 +16,8 @@ import * as argon2 from "argon2";
 import { isAuthenticated } from "./helpers/middlewares";
 import setupCors from "./helpers/cors";
 import { is } from "superstruct";
+import { ClickDamage } from "./engine/combat";
+import { initPlayerState } from "./engine/stateManager";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export function broadcast_message(topic: MESSAGE_ENUM, message: any) {
@@ -138,12 +140,19 @@ export const WebApiApp = App()
         username: ws.user.username,
       });
 
+      initPlayerState(ws.id);
+
       REQUIRE_UPDATES.add(ws.id);
     },
-    message: (ws, message) => {
+    message: async (ws, message) => {
       const clientMsg = decode(new Uint8Array(message));
 
       switch (clientMsg.type) {
+        case MESSAGE_ENUM.PLAYER_CLICK:
+          ClickDamage(ws.id);
+
+          REQUIRE_UPDATES.add(ws.id);
+          break;
         case MESSAGE_ENUM.CLIENT_MESSAGE:
           broadcast_message(MESSAGE_ENUM.CLIENT_MESSAGE, {
             sender: ws.user.username,
@@ -207,7 +216,7 @@ export const WebApiApp = App()
             accessToken,
           })
         );
-      } catch (e) {
+      } catch (error) {
         res.writeStatus("201 Created");
         setupCors(res);
         res.end(

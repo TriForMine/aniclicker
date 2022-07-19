@@ -13,10 +13,7 @@ declare type ExtractState<S> = S extends {
 
 declare type UseContextStore<S extends StoreApi<State>> = {
   (): ExtractState<S>;
-  <U>(
-    selector: StateSelector<ExtractState<S>, U>,
-    equalityFn?: EqualityChecker<U>
-  ): U;
+  <U>(selector: StateSelector<ExtractState<S>, U>, equalityFn?: EqualityChecker<U>): U;
 };
 
 export interface UserInfo {
