@@ -204,7 +204,11 @@ export const WebApiApp = App()
 
         res.writeHeader(
           "Set-Cookie",
-          `refreshToken=${refreshToken}; Path=/; HttpOnly;`
+          `refreshToken=${refreshToken}; Path=/; HttpOnly;${
+            process.env.NODE_ENV === "production"
+              ? " Secure; SameSite=Strict"
+              : ""
+          }`
         );
 
         res.writeStatus("201 Created");
@@ -271,7 +275,11 @@ export const WebApiApp = App()
 
       res.writeHeader(
         "Set-Cookie",
-        `refreshToken=${refreshToken}; Path=/; HttpOnly;`
+        `refreshToken=${refreshToken}; Path=/; HttpOnly;${
+          process.env.NODE_ENV === "production"
+            ? " Secure; SameSite=Strict"
+            : ""
+        }`
       );
 
       res.writeStatus("200");
@@ -334,7 +342,11 @@ export const WebApiApp = App()
 
       res.writeHeader(
         "Set-Cookie",
-        `refreshToken=${refreshToken}; Path=/; HttpOnly;`
+        `refreshToken=${refreshToken}; Path=/; HttpOnly;${
+          process.env.NODE_ENV === "production"
+            ? " Secure; SameSite=Strict"
+            : ""
+        }`
       );
 
       res.writeStatus("200");
