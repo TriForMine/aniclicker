@@ -6,13 +6,15 @@ export const getUserProps: GetServerSideProps = async (context) => {
   const { req, res } = context;
   const cookie = req.headers.cookie;
   try {
-    const data = await api.post("/refreshToken", null, {
-      headers: {
-        cookie,
-      },
-    }).then((res) => {
+    const data = await api
+      .post("/refreshToken", null, {
+        headers: {
+          cookie,
+        },
+      })
+      .then((res) => {
         return res;
-    });
+      });
 
     res.setHeader("Set-Cookie", data.headers["set-cookie"]);
 
@@ -31,7 +33,7 @@ export const getUserProps: GetServerSideProps = async (context) => {
       props: { initialZustandState: JSON.stringify(zustandStore.getState()) },
     };
   } catch (e) {
-    console.log(e)
+    console.log(e);
     return {
       props: {},
     };
