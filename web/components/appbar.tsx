@@ -12,9 +12,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import PlusOneIcon from '@mui/icons-material/PlusOne';
-import LoginIcon from '@mui/icons-material/Login';
 import Link from "next/link";
-import {useStore} from "../src/store";
+import {UserInfo, useStore} from "../src/store";
 import shallow from "zustand/shallow";
 import {LoginModal} from "./loginModal";
 
@@ -35,7 +34,7 @@ export function ReactiveAppBar() {
 			setUserInfo: store.setUserInfo,
 			setAccessToken: store.setAccessToken,
 		}),
-		shallow)
+		shallow) as unknown as { user_info: UserInfo }
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
