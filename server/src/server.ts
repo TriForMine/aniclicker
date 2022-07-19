@@ -206,8 +206,8 @@ export const WebApiApp = App()
           "Set-Cookie",
           `refreshToken=${refreshToken}; Path=/; HttpOnly; Domain=${
             process.env.NODE_ENV === "production"
-              ? "wss://api.aniclicker.com"
-              : "ws://localhost:9001"
+              ? "www.aniclicker.com"
+              : "localhost"
           };${
             process.env.NODE_ENV === "production"
               ? " Secure; SameSite=Strict"
@@ -281,8 +281,8 @@ export const WebApiApp = App()
         "Set-Cookie",
         `refreshToken=${refreshToken}; Path=/; HttpOnly; Domain=${
           process.env.NODE_ENV === "production"
-            ? "wss://api.aniclicker.com"
-            : "ws://localhost:9001"
+            ? "www.aniclicker.com"
+            : "localhost"
         };${
           process.env.NODE_ENV === "production"
             ? " Secure; SameSite=Strict"
@@ -352,8 +352,8 @@ export const WebApiApp = App()
         "Set-Cookie",
         `refreshToken=${refreshToken}; Path=/; HttpOnly; Domain=${
           process.env.NODE_ENV === "production"
-            ? "wss://api.aniclicker.com"
-            : "ws://localhost:9001"
+            ? "www.aniclicker.com"
+            : "localhost"
         };${
           process.env.NODE_ENV === "production"
             ? " Secure; SameSite=Strict"
