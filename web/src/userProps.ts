@@ -5,14 +5,12 @@ import { initializeStore } from "./store";
 export const getUserProps: GetServerSideProps = async (context) => {
   const { req, res } = context;
   const cookie = req.headers.cookie;
-  console.log('FETCHING DATA', cookie)
   try {
     const data = await api.post("/refreshToken", null, {
       headers: {
         cookie,
       },
     }).then((res) => {
-        console.log('DATA', res.data)
         return res;
     });
 
