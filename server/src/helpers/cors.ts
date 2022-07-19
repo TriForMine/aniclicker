@@ -5,7 +5,7 @@ export default (res: HttpResponse) => {
   res.writeHeader(
     "Access-Control-Allow-Origin",
     process.env.NODE_ENV === "production"
-      ? "https://www.isekaimaid.com"
+      ? "https://www.aniclicker.com"
       : "http://localhost:3000"
   );
   res.writeHeader("Access-Control-Allow-Credentials", "true");
