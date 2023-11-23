@@ -17,7 +17,7 @@
     "@mui/icons-material": "5.8.4",
     "@mui/material": "5.9.1",
     "@mui/styles": "5.9.1",
-    "@mui/x-date-pickers": "5.0.0-beta.2",
+    "@mui/x-date-pickers": "6.18.2",
     "@rearguard/is-email": "1.9.6",
     "axios": "0.27.2",
     "axios-auth-refresh": "3.3.1",
