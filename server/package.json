@@ -1,10 +1,10 @@
 {
   "name": "server",
   "version": "0.0.1",
-  "packageManager": "yarn@4.0.0-rc.10",
+  "packageManager": "yarn@4.0.2",
   "dependencies": {
-    "argon2": "^0.28.5",
-    "edgedb": "^0.21.0",
+    "argon2": "^0.31.0",
+    "edgedb": "^0.22.0",
     "fast-jwt": "^1.6.0",
     "nanoid": "^4.0.0",
     "superstruct": "^0.16.0",
@@ -25,20 +25,20 @@
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "@types/node": "18.0.0",
-    "@typescript-eslint/eslint-plugin": "5.30.7",
-    "@typescript-eslint/parser": "5.30.7",
-    "eslint": "8.20.0",
-    "eslint-config-prettier": "8.5.0",
-    "eslint-import-resolver-typescript": "3.3.0",
-    "eslint-plugin-import": "2.26.0",
+    "@types/node": "18.19.1",
+    "@typescript-eslint/eslint-plugin": "5.62.0",
+    "@typescript-eslint/parser": "5.62.0",
+    "eslint": "8.55.0",
+    "eslint-config-prettier": "8.10.0",
+    "eslint-import-resolver-typescript": "3.6.1",
+    "eslint-plugin-import": "2.29.0",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-prettier": "4.2.1",
-    "nodemon": "2.0.19",
-    "npm-check-updates": "16.0.0",
-    "pino": "8.3.0",
+    "nodemon": "2.0.22",
+    "npm-check-updates": "16.14.11",
+    "pino": "8.16.2",
     "pino-pretty": "8.1.0",
-    "prettier": "2.7.1",
-    "typescript": "4.7.4"
+    "prettier": "2.8.8",
+    "typescript": "4.9.5"
   }
 }
