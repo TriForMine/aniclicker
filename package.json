@@ -1,7 +1,7 @@
 {
   "name": "aniclicker",
   "version": "0.0.1",
-  "packageManager": "yarn@4.0.0-rc.10",
+  "packageManager": "yarn@4.0.2",
   "private": true,
   "workspaces": [
     "web",
@@ -15,8 +15,8 @@
     "start": "concurrently --kill-others-on-fail \"yarn server\"  \"yarn web\""
   },
   "devDependencies": {
-    "concurrently": "7.3.0",
+    "concurrently": "7.6.0",
     "tsc-watch": "5.0.3",
-    "typescript": "4.7.4"
+    "typescript": "4.9.5"
   }
 }
